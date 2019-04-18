@@ -1,10 +1,10 @@
 //read and set environment variable with dotenv package
-require(dotenv).config();
+//require(dotenv).config();
 
 //npm packages to be used
 var keys = require("./keys.js");
 var mysql = require("mysql");
-var inquireer = require("inquirer");
+var inquirer = require("inquirer");
 
 //create connection to sql database for information collection
 var connection = mysql.createConnection({
@@ -16,7 +16,7 @@ user: "root",
 
 //password(in dotenv file)
 password: (keys.mysqlpass.password),
-database: "bamazon_db",
+database: "bamazondb",
 });
 
 //connection error function & console log
@@ -24,7 +24,6 @@ connection.connect(function(err) {
     if(err) throw err;
     start()
 });
-
 
 //start function
 function start() {

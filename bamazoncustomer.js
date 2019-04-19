@@ -1,6 +1,3 @@
-//read and set environment variable with dotenv package
-//require(dotenv).config();
-
 //npm packages to be used
 var keys = require("./keys.js");
 var mysql = require("mysql");
@@ -43,22 +40,21 @@ connection.query("SELECT * FROM products", function(err, res) {
 }
 
 //run prompt function
-function userPrompt(){
+function askQuestions(){
 
 //inquirer prompt
-inquirer 
-.prompt([
+inquirer.prompt([
     {
         name:"userID",
         type:"input",
         message:"What is the item ID you would like to purchase?",
     },
-]),
     {
-        name: "quantity",
-        type: "input",
-        message: "How many would you like to purchase?",
-    },
+    name: "quantity",
+    type: "input",
+    message: "How many would you like to purchase?",
+},
+]),
 then(function(answer) {
 //get info from item ID input
     connection.query("SELECT * FROM products", function(err, res){
